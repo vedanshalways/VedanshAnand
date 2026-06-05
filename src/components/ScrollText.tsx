@@ -34,7 +34,6 @@ export default function ScrollText({
   }, []);
 
   const words = text.split(' ');
-  const revealedCount = Math.floor(progress * words.length);
 
   return (
     <div
@@ -42,24 +41,33 @@ export default function ScrollText({
       style={{
         fontSize,
         fontWeight: 700,
-        lineHeight: 1.2,
-        letterSpacing: '-0.02em',
+        lineHeight: 1.5,
+        letterSpacing: '-0.01em',
         textAlign: centered ? 'center' : 'left',
+        width: '100%',
+        display: 'block',
+        wordBreak: 'break-word',
+        overflowWrap: 'break-word',
+        whiteSpace: 'normal',
       }}
     >
-      {words.map((word, i) => (
-        <span
-          key={i}
-          style={{
-            color: i < revealedCount ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.08)',
-            transition: 'color 0.5s ease',
-            marginRight: '0.3em',
-            display: 'inline',
-          }}
-        >
-          {word}
-        </span>
-      ))}
+      {words.map((word, i) => {
+        const wordProgress = Math.min(1, Math.max(0, (progress * words.length - i) ));
+        const opacity = 0.08 + wordProgress * 0.87;
+        return (
+          <span
+            key={i}
+            style={{
+              color: `rgba(255,255,255,${opacity.toFixed(3)})`,
+              transition: 'color 0.4s ease',
+              marginRight: '0.3em',
+              display: 'inline',
+            }}
+          >
+            {word}
+          </span>
+        );
+      })}
     </div>
   );
 }

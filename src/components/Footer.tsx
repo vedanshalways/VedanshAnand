@@ -8,7 +8,7 @@ export default function Footer() {
         {/* left — name + tagline */}
         <div>
           <p className="font-bold text-white text-xl tracking-[-0.02em] mb-1">Vedansh Anand</p>
-          <p className="text-white/25 text-xs tracking-[0.2em] uppercase">Developer · Founder · Builder</p>
+          <p className="text-white/50 text-xs tracking-[0.2em] uppercase">Developer · Founder · Builder</p>
         </div>
 
         {/* center — nav links */}
@@ -20,25 +20,24 @@ export default function Footer() {
             { label: 'Contact', href: '/contact' },
           ].map(l => (
             <Link key={l.label} href={l.href}
-              className="text-white/30 text-xs tracking-[0.15em] uppercase hover:text-white transition-colors duration-150">
+              className="text-white/55 text-xs tracking-[0.15em] uppercase hover:text-white transition-colors duration-150">
               {l.label}
             </Link>
           ))}
         </nav>
 
-        {/* right — external links + copyright */}
-        <div className="flex flex-col items-start md:items-end gap-3">
+        {/* external links + copyright */}
         <div className="flex gap-4 justify-center">
-            <a href="https://linkedin.com/in/vedansh-anand-175600360" target="_blank" rel="noopener noreferrer"
-              className="text-white/25 text-xs hover:text-white transition-colors">LinkedIn ↗</a>
-            <a href="https://quantaify.org" target="_blank" rel="noopener noreferrer"
-              className="text-white/25 text-xs hover:text-white transition-colors">Quantaify ↗</a>
-            <a href="https://amria.org" target="_blank" rel="noopener noreferrer"
-              className="text-white/25 text-xs hover:text-white transition-colors">Amria ↗</a>
-          </div>
-          <span className="text-white/10 text-[10px] tracking-[0.25em] uppercase">
-            © {new Date().getFullYear()} · Sammamish, WA
-          </span>
+          <a href="https://linkedin.com/in/vedansh-anand-175600360" target="_blank" rel="noopener noreferrer"
+            className="text-white/55 text-xs hover:text-white transition-colors">LinkedIn ↗</a>
+          <a href="https://quantaify.org" target="_blank" rel="noopener noreferrer"
+            className="text-white/55 text-xs hover:text-white transition-colors">Quantaify ↗</a>
+          <a href="https://amria.org" target="_blank" rel="noopener noreferrer"
+            className="text-white/55 text-xs hover:text-white transition-colors">Amria ↗</a>
+        </div>
+        <span className="text-white/30 text-[10px] tracking-[0.25em] uppercase">
+          © {new Date().getFullYear()} · Sammamish, WA
+        </span>
 
       </div>
     </footer>

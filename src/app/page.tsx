@@ -15,7 +15,7 @@ export default function Home() {
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.7))', pointerEvents: 'none' }} />
 
         <div className="relative text-center px-6">
-          <p className="text-[11px] uppercase tracking-[0.45em] text-white/35 mb-8"
+          <p className="text-[11px] uppercase tracking-[0.45em] text-white/60 mb-8"
             style={{ animation: 'fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.1s both' }}>
             10th grade · Sammamish, WA
           </p>
@@ -23,7 +23,7 @@ export default function Home() {
             style={{ fontSize: 'clamp(4.5rem, 13vw, 10.5rem)', animation: 'fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s both' }}>
             Vedansh<br />Anand
           </h1>
-          <p className="text-white/45 text-base mb-10"
+          <p className="text-white/70 text-base mb-10"
             style={{ animation: 'fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.35s both' }}>
             Developer · Founder · Builder
           </p>
@@ -38,25 +38,30 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/20 text-[9px] tracking-[0.4em] uppercase">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 text-[9px] tracking-[0.4em] uppercase">
           <span>Scroll</span>
           <span className="animate-bounce">↓</span>
         </div>
       </section>
 
+      {/* hero → scroll text fade */}
+      <div style={{ height: '10rem', marginTop: '-10rem', background: 'linear-gradient(to bottom, transparent, black)', position: 'relative', zIndex: 2, pointerEvents: 'none' }} />
+
       {/* ── SCROLL TEXT ── */}
-      <section className="px-8 md:px-14 py-32 md:py-48 flex justify-center">
-        <div className="max-w-3xl w-full">
+      <section className="relative px-8 md:px-20 py-32 md:py-48 flex justify-center items-center">
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(2px)', WebkitBackdropFilter: 'blur(2px)', pointerEvents: 'none' }} />
+        <div className="relative w-full mx-auto" style={{ zIndex: 1, maxWidth: '720px', textAlign: 'center' }}>
           <ScrollText
-            text="Add your description here."
-            fontSize="45px"
+            text="I'm Vedansh, originally from India and now based in Sammamish, Washington. Moving countries shaped a lot of how I see the world — I grew up between two cultures, and that curiosity about people and places is a big part of who I am today. I love building things, I'm probably thinking about a startup idea right now, and I'm still getting used to the rain."
+            fontSize="clamp(1.5rem, 2.8vw, 2.2rem)"
             centered
           />
         </div>
       </section>
 
       {/* ── ABOUT / SCHOOL ── */}
-      <section className="border-t border-white/8 px-8 md:px-14 py-24">
+      <section className="px-8 md:px-14 py-24" style={{ borderTop: 'none', position: 'relative' }}>
+        <div style={{ position: 'absolute', top: 0, left: '10%', right: '10%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.12) 30%, rgba(255,255,255,0.12) 70%, transparent)', pointerEvents: 'none' }} />
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 md:gap-20 items-center">
 
           {/* photo */}
@@ -69,18 +74,18 @@ export default function Home() {
 
           {/* school copy */}
           <Reveal delay={80} className="flex-1">
-            <p className="text-white/20 text-[10px] uppercase tracking-[0.4em] mb-5">School</p>
+            <p className="text-white/50 text-[10px] uppercase tracking-[0.4em] mb-5">School</p>
             <h3 className="font-bold text-white text-3xl md:text-4xl tracking-[-0.02em] leading-tight mb-5">
               Eastside Catholic<br />High School
             </h3>
-            <p className="text-white/50 text-lg leading-relaxed mb-7">
+            <p className="text-white/75 text-lg leading-relaxed mb-7">
               Add a few sentences about your school experience here — clubs, classes, community, what it means to you.
             </p>
-            <div className="flex flex-wrap gap-x-4 gap-y-2 text-white/25 text-sm">
+            <div className="flex flex-wrap gap-x-4 gap-y-2 text-white/50 text-sm">
               <span>Sammamish, WA</span>
-              <span className="text-white/10">·</span>
+              <span className="text-white/25">·</span>
               <span>10th Grade</span>
-              <span className="text-white/10">·</span>
+              <span className="text-white/25">·</span>
               <span>National Honor Society</span>
             </div>
           </Reveal>
@@ -145,8 +150,8 @@ export default function Home() {
       <section id="work" className="border-t border-white/8 px-8 md:px-14 py-20">
         <Reveal>
           <div className="flex items-center justify-between mb-10">
-            <p className="text-white/20 text-[10px] uppercase tracking-[0.4em]">Work</p>
-            <Link href="/projects" className="text-white/25 text-[10px] uppercase tracking-[0.2em] hover:text-white transition-colors">
+            <p className="text-white/50 text-[10px] uppercase tracking-[0.4em]">Work</p>
+            <Link href="/projects" className="text-white/50 text-[10px] uppercase tracking-[0.2em] hover:text-white transition-colors">
               All projects ↗
             </Link>
           </div>
@@ -163,10 +168,10 @@ export default function Home() {
               <div className="bg-black px-7 py-8 h-full flex flex-col justify-between gap-6 hover:bg-white/[0.03] transition-colors group">
                 <div>
                   <p className="text-white font-semibold text-xl mb-1.5">{p.name}</p>
-                  <p className="text-white/30 text-xs tracking-wide">{p.tag}</p>
+                  <p className="text-white/55 text-xs tracking-wide">{p.tag}</p>
                 </div>
                 <div className="flex items-end justify-between">
-                  <span className="text-white/15 text-xs">{p.year}</span>
+                  <span className="text-white/40 text-xs">{p.year}</span>
                   {p.href && (
                     <a href={p.href} target="_blank" rel="noopener noreferrer"
                       className="text-white/20 text-xs hover:text-white transition-colors">↗</a>
@@ -179,29 +184,6 @@ export default function Home() {
       </section>
 
 
-      {/* ── CONTACT ── */}
-      <section id="contact" className="border-t border-white/8 px-8 md:px-14 py-20 pb-32">
-        <Reveal>
-          <h2 className="font-bold text-white leading-[0.88] tracking-[-0.04em] mb-10"
-            style={{ fontSize: 'clamp(2.8rem, 7vw, 6rem)' }}>
-            Let&apos;s build<br />something.
-          </h2>
-        </Reveal>
-        <Reveal delay={80}>
-          <div className="flex flex-wrap gap-3">
-            {[
-              { l: 'LinkedIn ↗', h: 'https://linkedin.com/in/vedansh-anand-175600360' },
-              { l: 'Quantaify ↗', h: 'https://quantaify.org' },
-              { l: 'Amria ↗', h: 'https://amria.org' },
-            ].map(link => (
-              <a key={link.l} href={link.h} target="_blank" rel="noopener noreferrer"
-                className="px-6 py-2.5 border border-white/15 rounded-full text-white/50 text-sm hover:border-white/40 hover:text-white transition-all duration-150">
-                {link.l}
-              </a>
-            ))}
-          </div>
-        </Reveal>
-      </section>
 
       <style>{`
         @keyframes fadeUp {
