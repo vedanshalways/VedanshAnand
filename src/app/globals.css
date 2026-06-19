@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+*, *::before, *::after {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -9,4 +14,15 @@ body {
   color: #fff;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, a {
+  touch-action: manipulation;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

@@ -8,7 +8,7 @@ const links = [
 
 export default function ContactPage() {
   return (
-    <div className="px-8 md:px-14 pt-36 pb-28">
+    <div className="px-6 md:px-14 pt-32 md:pt-36 pb-20 md:pb-28">
       <Reveal>
         <h1
           className="font-bold text-white leading-[0.88] tracking-[-0.04em] mb-14"

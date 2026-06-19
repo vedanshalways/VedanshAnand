@@ -45,7 +45,7 @@ export default function ProjectsPage() {
   const [open, setOpen] = useState<string | null>(null);
 
   return (
-    <div className="px-8 md:px-14 pt-36 pb-28">
+    <div className="px-6 md:px-14 pt-32 md:pt-36 pb-20 md:pb-28">
       <Reveal>
         <p className="text-white/20 text-[10px] uppercase tracking-[0.4em] mb-16">Selected work</p>
       </Reveal>
@@ -86,7 +86,7 @@ export default function ProjectsPage() {
                   className="overflow-hidden transition-all duration-500"
                   style={{ maxHeight: isOpen ? '400px' : '0px', opacity: isOpen ? 1 : 0 }}
                 >
-                  <div className="pb-8 pl-11 flex flex-col md:flex-row gap-8 md:gap-16">
+                  <div className="pb-8 pl-0 md:pl-11 flex flex-col md:flex-row gap-8 md:gap-16">
                     <div className="flex-1">
                       <p className="text-white/55 text-base leading-relaxed mb-5 max-w-xl">
                         {p.description}

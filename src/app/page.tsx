@@ -20,7 +20,7 @@ export default function Home() {
             10th grade · Sammamish, WA
           </p>
           <h1 className="font-bold text-white leading-[0.88] tracking-[-0.04em] mb-8"
-            style={{ fontSize: 'clamp(4.5rem, 13vw, 10.5rem)', animation: 'fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s both' }}>
+            style={{ fontSize: 'clamp(4rem, 13vw, 10.5rem)', animation: 'fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.2s both' }}>
             Vedansh<br />Anand
           </h1>
           <p className="text-white/70 text-base mb-10"
@@ -29,12 +29,12 @@ export default function Home() {
           </p>
           <div className="flex gap-3 justify-center"
             style={{ animation: 'fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) 0.5s both' }}>
-            <a href="#work" className="px-7 py-2.5 bg-white text-black font-semibold rounded-full text-xs tracking-[0.12em] uppercase hover:bg-white/90 transition-colors">
+            <a href="#work" className="px-7 py-3 bg-white text-black font-semibold rounded-full text-xs tracking-[0.12em] uppercase hover:bg-white/90 transition-colors">
               Work
             </a>
-            <a href="#contact" className="px-7 py-2.5 border border-white/20 text-white/70 font-semibold rounded-full text-xs tracking-[0.12em] uppercase hover:border-white/50 hover:text-white transition-colors">
+            <Link href="/contact" className="px-7 py-3 border border-white/20 text-white/70 font-semibold rounded-full text-xs tracking-[0.12em] uppercase hover:border-white/50 hover:text-white transition-colors">
               Contact
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -48,44 +48,46 @@ export default function Home() {
       <div style={{ height: '10rem', marginTop: '-10rem', background: 'linear-gradient(to bottom, transparent, black)', position: 'relative', zIndex: 2, pointerEvents: 'none' }} />
 
       {/* ── SCROLL TEXT ── */}
-      <section className="relative px-8 md:px-20 py-32 md:py-48 flex justify-center items-center">
+      <section className="relative px-6 md:px-20 py-24 md:py-48 flex justify-center items-center">
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(2px)', WebkitBackdropFilter: 'blur(2px)', pointerEvents: 'none' }} />
         <div className="relative w-full mx-auto" style={{ zIndex: 1, maxWidth: '720px', textAlign: 'center' }}>
           <ScrollText
             text="I'm Vedansh, originally from India and now based in Sammamish, Washington. Moving countries shaped a lot of how I see the world — I grew up between two cultures, and that curiosity about people and places is a big part of who I am today. I love building things, I'm probably thinking about a startup idea right now, and I'm still getting used to the rain."
-            fontSize="clamp(1.5rem, 2.8vw, 2.2rem)"
+            fontSize="clamp(1.35rem, 2.8vw, 2.2rem)"
             centered
           />
         </div>
       </section>
 
       {/* ── ABOUT / SCHOOL ── */}
-      <section className="px-8 md:px-14 py-24" style={{ borderTop: 'none', position: 'relative' }}>
+      <section className="px-6 md:px-14 py-20 md:py-24" style={{ borderTop: 'none', position: 'relative' }}>
         <div style={{ position: 'absolute', top: 0, left: '10%', right: '10%', height: '1px', background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.12) 30%, rgba(255,255,255,0.12) 70%, transparent)', pointerEvents: 'none' }} />
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 md:gap-20 items-center">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-10 md:gap-20 items-center">
 
           {/* photo */}
-          <Reveal className="shrink-0">
-            <div className="w-72 md:w-96 aspect-[3/4] rounded-2xl overflow-hidden bg-white/5 border border-white/8">
+          <Reveal className="shrink-0 w-full flex justify-center md:block md:w-auto">
+            <div className="w-full max-w-[280px] md:max-w-none md:w-96 aspect-[3/4] rounded-2xl overflow-hidden bg-white/5 border border-white/8">
               <img src="/me.jpg" alt="Vedansh Anand" className="w-full h-full object-cover" />
             </div>
           </Reveal>
 
           {/* school copy */}
-          <Reveal delay={80} className="flex-1">
-            <p className="text-white/50 text-[10px] uppercase tracking-[0.4em] mb-5">School</p>
-            <h3 className="font-bold text-white text-3xl md:text-4xl tracking-[-0.02em] leading-tight mb-5">
-              Eastside Catholic<br />High School
-            </h3>
-            <p className="text-white/75 text-lg leading-relaxed mb-7">
-              Add a few sentences about your school experience here — clubs, classes, community, what it means to you.
-            </p>
-            <div className="flex flex-wrap gap-x-4 gap-y-2 text-white/50 text-sm">
-              <span>Sammamish, WA</span>
-              <span className="text-white/25">·</span>
-              <span>10th Grade</span>
-              <span className="text-white/25">·</span>
-              <span>National Honor Society</span>
+          <Reveal delay={80} className="flex-1 w-full">
+            <div className="text-center md:text-left">
+              <p className="text-white/50 text-[10px] uppercase tracking-[0.4em] mb-5">School</p>
+              <h3 className="font-bold text-white text-3xl md:text-4xl tracking-[-0.02em] leading-tight mb-5">
+                Eastside Catholic<br />High School
+              </h3>
+              <p className="text-white/75 text-lg leading-relaxed mb-7">
+                Add a few sentences about your school experience here — clubs, classes, community, what it means to you.
+              </p>
+              <div className="flex flex-wrap gap-x-4 gap-y-2 text-white/50 text-sm justify-center md:justify-start">
+                <span>Sammamish, WA</span>
+                <span className="text-white/25">·</span>
+                <span>10th Grade</span>
+                <span className="text-white/25">·</span>
+                <span>National Honor Society</span>
+              </div>
             </div>
           </Reveal>
 
@@ -94,9 +96,7 @@ export default function Home() {
 
       {/* ── MARQUEE SECTION ── */}
       <section className="relative h-screen overflow-hidden flex items-center justify-center">
-        {/* top color fade — blends section above into Aurora */}
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '10rem', background: 'linear-gradient(to bottom, black, transparent)', zIndex: 11, pointerEvents: 'none' }} />
-        {/* Aurora background */}
         <div className="absolute inset-0">
           <Aurora
             colorStops={['#B497CF', '#6644aa', '#3a2060']}
@@ -109,8 +109,7 @@ export default function Home() {
         <GradualBlur position="top" height="8rem" strength={3} divCount={6} curve="bezier" exponential opacity={1} zIndex={10} />
         <GradualBlur position="bottom" height="8rem" strength={3} divCount={6} curve="bezier" exponential opacity={1} zIndex={10} />
 
-        {/* stacked marquee rows */}
-        <div className="relative w-full overflow-hidden space-y-6 select-none">
+        <div className="relative w-full overflow-hidden space-y-4 md:space-y-6 select-none">
           {[
             { words: ['Drive', 'Vision', 'Build', 'Ship', 'Create', 'Drive', 'Vision', 'Build', 'Ship', 'Create'], dir: 1 },
             { words: ['Code', 'Innovate', 'Execute', 'Lead', 'Focus', 'Code', 'Innovate', 'Execute', 'Lead', 'Focus'], dir: -1 },
@@ -121,12 +120,12 @@ export default function Home() {
               animation: `marquee${row.dir > 0 ? 'Fwd' : 'Rev'} ${18 + ri * 4}s linear infinite`,
             }}>
               {[...row.words, ...row.words, ...row.words].map((word, wi) => (
-                <span key={wi} className="inline-flex items-center gap-4 px-6">
+                <span key={wi} className="inline-flex items-center gap-3 md:gap-4 px-4 md:px-6">
                   <span className="font-bold text-white/80 uppercase tracking-[0.1em]"
-                    style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}>
+                    style={{ fontSize: 'clamp(1.6rem, 5vw, 4rem)' }}>
                     {word}
                   </span>
-                  <span className="text-white/20 text-2xl">·</span>
+                  <span className="text-white/20 text-xl md:text-2xl">·</span>
                 </span>
               ))}
             </div>
@@ -146,9 +145,9 @@ export default function Home() {
       `}</style>
 
       {/* ── WORK OVERVIEW ── */}
-      <section id="work" className="border-t border-white/8 px-8 md:px-14 py-20">
+      <section id="work" className="border-t border-white/8 px-6 md:px-14 py-16 md:py-20">
         <Reveal>
-          <div className="flex items-center justify-between mb-10">
+          <div className="flex items-center justify-between mb-8 md:mb-10">
             <p className="text-white/50 text-[10px] uppercase tracking-[0.4em]">Work</p>
             <Link href="/projects" className="text-white/50 text-[10px] uppercase tracking-[0.2em] hover:text-white transition-colors">
               All projects ↗
@@ -156,7 +155,7 @@ export default function Home() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/6 rounded-2xl overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px bg-white/6 rounded-2xl overflow-hidden">
           {[
             { name: 'Amria', tag: 'AI · Medical', year: '2024', href: 'https://amria.org' },
             { name: 'Quantaify', tag: 'Fintech · iOS', year: '2024', href: 'https://quantaify.org' },
@@ -164,7 +163,7 @@ export default function Home() {
             { name: 'Nova', tag: 'In progress', year: '2025', href: null },
           ].map((p, i) => (
             <Reveal key={p.name} delay={i * 50}>
-              <div className="bg-black px-7 py-8 h-full flex flex-col justify-between gap-6 hover:bg-white/[0.03] transition-colors group">
+              <div className="bg-black px-6 py-7 md:px-7 md:py-8 h-full flex flex-col justify-between gap-6 hover:bg-white/[0.03] transition-colors group min-h-[120px]">
                 <div>
                   <p className="text-white font-semibold text-xl mb-1.5">{p.name}</p>
                   <p className="text-white/55 text-xs tracking-wide">{p.tag}</p>
@@ -181,8 +180,6 @@ export default function Home() {
           ))}
         </div>
       </section>
-
-
 
       <style>{`
         @keyframes fadeUp {

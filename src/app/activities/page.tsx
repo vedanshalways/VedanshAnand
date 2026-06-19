@@ -11,7 +11,7 @@ const activities = [
 
 export default function ActivitiesPage() {
   return (
-    <div className="px-8 md:px-14 pt-36 pb-28">
+    <div className="px-6 md:px-14 pt-32 md:pt-36 pb-20 md:pb-28">
       <Reveal>
         <p className="text-white/20 text-[10px] uppercase tracking-[0.4em] mb-16">Activities</p>
       </Reveal>
