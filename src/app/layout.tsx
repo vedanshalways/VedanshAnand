@@ -1,25 +1,29 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Bebas_Neue } from 'next/font/google';
 import './globals.css';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
-import Background from '@/components/Background';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const bebas = Bebas_Neue({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-display',
+});
 
 export const metadata: Metadata = {
   title: 'Vedansh Anand',
-  description: 'Personal portfolio of Vedansh Anand — Builder, Developer, Innovator',
+  description: 'Personal portfolio of Vedansh Anand — Developer, Founder, Builder',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.className}>
-      <body className="bg-black text-white min-h-screen">
-        <Background />
-        <div style={{ position: 'relative', zIndex: 1 }}>
+    <html lang="en" className={`${inter.variable} ${bebas.variable}`}>
+      <body>
+        <div className="site-bg" />
+        <div className="site-wrap">
           <Nav />
-          <main className="overflow-x-hidden">{children}</main>
+          <main>{children}</main>
           <Footer />
         </div>
       </body>

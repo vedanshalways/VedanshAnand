@@ -5,24 +5,78 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  background: #000;
+  background: #0d0d0d;
   color: #fff;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter), sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
-button, a {
-  touch-action: manipulation;
+/* Fixed red-glow background — replaces WebGL aurora */
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 85% 44%, rgba(160,0,0,0.62) 0%, rgba(85,0,0,0.32) 34%, rgba(25,0,0,0.08) 57%, transparent 72%),
+    #0d0d0d;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+.site-wrap {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+
+.site-wrap main { flex: 1; }
+
+/* Bebas Neue display font utility */
+.display {
+  font-family: var(--font-display), sans-serif;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+}
+
+/* Shared button styles */
+.btn-red {
+  display: inline-block;
+  padding: 12px 32px;
+  background: #CC1A1A;
+  color: #fff;
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border-radius: 3px;
+  border: 2px solid #CC1A1A;
+  transition: background 0.15s, border-color 0.15s;
+  cursor: pointer;
+}
+.btn-red:hover { background: #E02020; border-color: #E02020; }
+
+.btn-outline {
+  display: inline-block;
+  padding: 12px 32px;
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border-radius: 3px;
+  border: 2px solid rgba(255,255,255,0.28);
+  transition: border-color 0.15s, color 0.15s;
+  cursor: pointer;
+}
+.btn-outline:hover { border-color: rgba(255,255,255,0.65); color: #fff; }
+
+button, a { touch-action: manipulation; }
+img { max-width: 100%; height: auto; }

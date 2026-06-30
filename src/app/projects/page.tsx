@@ -45,28 +45,38 @@ export default function ProjectsPage() {
   const [open, setOpen] = useState<string | null>(null);
 
   return (
-    <div className="px-6 md:px-14 pt-32 md:pt-36 pb-20 md:pb-28">
+    <div className="px-6 md:px-14 pt-28 pb-20">
+
+      {/* Page header */}
       <Reveal>
-        <p className="text-white/20 text-[10px] uppercase tracking-[0.4em] mb-16">Selected work</p>
+        <div className="max-w-5xl mx-auto mb-12">
+          <p className="uppercase mb-2" style={{ fontSize: '11px', letterSpacing: '0.4em', color: '#CC1A1A' }}>
+            Work
+          </p>
+          <h1 className="display text-white" style={{ fontSize: 'clamp(3.5rem, 10vw, 7rem)' }}>
+            Projects
+          </h1>
+        </div>
       </Reveal>
 
-      <div className="border-t border-white/8">
+      {/* Accordion list */}
+      <div className="max-w-5xl mx-auto border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
         {projects.map((p, i) => {
           const isOpen = open === p.name;
           return (
             <Reveal key={p.name} delay={i * 60}>
-              <div className="border-b border-white/8">
+              <div className="border-b" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
                 <button
                   onClick={() => setOpen(isOpen ? null : p.name)}
-                  className="w-full flex items-center justify-between py-7 group text-left"
+                  className="w-full flex items-center justify-between py-7 text-left group"
                 >
                   <div className="flex items-baseline gap-5">
-                    <span className="text-white/15 text-sm tabular-nums w-6 shrink-0">
+                    <span className="text-white/20 text-sm tabular-nums w-6 shrink-0">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <span
-                      className="font-bold text-white tracking-[-0.02em] transition-colors duration-150 group-hover:text-white/70"
-                      style={{ fontSize: 'clamp(1.8rem, 4vw, 3.2rem)' }}
+                      className="display text-white transition-colors duration-150 group-hover:text-white/60"
+                      style={{ fontSize: 'clamp(2rem, 5vw, 3.8rem)' }}
                     >
                       {p.name}
                     </span>
@@ -74,8 +84,11 @@ export default function ProjectsPage() {
                   <div className="flex items-center gap-6 shrink-0 ml-6">
                     <span className="text-white/25 text-xs tracking-widest hidden sm:block">{p.year}</span>
                     <span
-                      className="text-white/40 text-xl transition-transform duration-300 inline-block"
-                      style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}
+                      className="text-xl inline-block transition-all duration-300"
+                      style={{
+                        color: isOpen ? '#CC1A1A' : 'rgba(255,255,255,0.35)',
+                        transform: isOpen ? 'rotate(45deg)' : 'none',
+                      }}
                     >
                       +
                     </span>
@@ -86,7 +99,7 @@ export default function ProjectsPage() {
                   className="overflow-hidden transition-all duration-500"
                   style={{ maxHeight: isOpen ? '400px' : '0px', opacity: isOpen ? 1 : 0 }}
                 >
-                  <div className="pb-8 pl-0 md:pl-11 flex flex-col md:flex-row gap-8 md:gap-16">
+                  <div className="pb-8 flex flex-col md:flex-row gap-8 md:gap-16">
                     <div className="flex-1">
                       <p className="text-white/55 text-base leading-relaxed mb-5 max-w-xl">
                         {p.description}
@@ -95,7 +108,12 @@ export default function ProjectsPage() {
                         {p.tech.map(t => (
                           <span
                             key={t}
-                            className="px-2.5 py-1 rounded-full border border-white/[0.08] text-white/30 text-[11px]"
+                            className="px-3 py-1 rounded-full text-[11px]"
+                            style={{
+                              border: '1px solid rgba(204,26,26,0.3)',
+                              color: 'rgba(255,255,255,0.4)',
+                              background: 'rgba(204,26,26,0.06)',
+                            }}
                           >
                             {t}
                           </span>
