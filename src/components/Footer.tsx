@@ -2,43 +2,56 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 px-8 md:px-14 py-12 mt-10">
-      <div className="max-w-5xl mx-auto flex flex-col items-center text-center gap-8">
+    <footer style={{ borderTop: '1px solid rgba(255,255,255,0.07)', padding: '3rem 1.5rem' }}>
+      <div className="max-w-5xl mx-auto flex flex-col items-center gap-6 text-center">
 
-        {/* left — name + tagline */}
-        <div>
-          <p className="font-bold text-white text-xl tracking-[-0.02em] mb-1">Vedansh Anand</p>
-          <p className="text-white/50 text-xs tracking-[0.2em] uppercase">Developer · Founder · Builder</p>
-        </div>
+        <span
+          className="display"
+          style={{ fontSize: '2rem', color: '#CC1A1A', letterSpacing: '0.08em' }}
+        >
+          VA
+        </span>
 
-        {/* center — nav links */}
-        <nav className="flex flex-wrap gap-x-6 gap-y-2">
+        <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
           {[
             { label: 'Projects', href: '/projects' },
             { label: 'Activities', href: '/activities' },
             { label: 'Awards', href: '/awards' },
             { label: 'Contact', href: '/contact' },
           ].map(l => (
-            <Link key={l.label} href={l.href}
-              className="text-white/55 text-xs tracking-[0.15em] uppercase hover:text-white transition-colors duration-150">
+            <Link
+              key={l.href}
+              href={l.href}
+              className="text-white/40 text-[12px] uppercase tracking-[0.18em] hover:text-white transition-colors duration-150"
+            >
               {l.label}
             </Link>
           ))}
         </nav>
 
-        {/* external links + copyright */}
-        <div className="flex gap-4 justify-center">
-          <a href="https://linkedin.com/in/vedansh-anand-175600360" target="_blank" rel="noopener noreferrer"
-            className="text-white/55 text-xs hover:text-white transition-colors">LinkedIn ↗</a>
-          <a href="https://quantaify.org" target="_blank" rel="noopener noreferrer"
-            className="text-white/55 text-xs hover:text-white transition-colors">Quantaify ↗</a>
-          <a href="https://amria.org" target="_blank" rel="noopener noreferrer"
-            className="text-white/55 text-xs hover:text-white transition-colors">Amria ↗</a>
+        <div className="flex items-center gap-5">
+          {[
+            { label: 'LinkedIn', href: 'https://linkedin.com/in/vedansh-anand-175600360' },
+            { label: 'Quantaify', href: 'https://quantaify.org' },
+            { label: 'Amria', href: 'https://amria.org' },
+          ].map((l, i, arr) => (
+            <span key={l.href} className="flex items-center gap-5">
+              <a
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/35 text-xs hover:text-white transition-colors duration-150"
+              >
+                {l.label} ↗
+              </a>
+              {i < arr.length - 1 && <span className="text-white/15 text-xs">·</span>}
+            </span>
+          ))}
         </div>
-        <span className="text-white/30 text-[10px] tracking-[0.25em] uppercase">
-          © {new Date().getFullYear()} · Sammamish, WA
-        </span>
 
+        <p className="text-white/20 text-[10px] uppercase tracking-[0.25em]">
+          © {new Date().getFullYear()} Vedansh Anand · Sammamish, WA
+        </p>
       </div>
     </footer>
   );

@@ -11,17 +11,32 @@ const activities = [
 
 export default function ActivitiesPage() {
   return (
-    <div className="px-6 md:px-14 pt-32 md:pt-36 pb-20 md:pb-28">
+    <div className="px-6 md:px-14 pt-28 pb-20">
+
+      {/* Page header */}
       <Reveal>
-        <p className="text-white/20 text-[10px] uppercase tracking-[0.4em] mb-16">Activities</p>
+        <div className="max-w-5xl mx-auto mb-12">
+          <p className="uppercase mb-2" style={{ fontSize: '11px', letterSpacing: '0.4em', color: '#CC1A1A' }}>
+            Extracurriculars
+          </p>
+          <h1 className="display text-white" style={{ fontSize: 'clamp(3.5rem, 10vw, 7rem)' }}>
+            Activities
+          </h1>
+        </div>
       </Reveal>
 
-      <div className="border-t border-white/8">
+      <div className="max-w-5xl mx-auto border-t" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
         {activities.map((a, i) => (
           <Reveal key={a.name} delay={i * 50}>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-6 border-b border-white/8">
-              <p className="text-white font-medium text-xl">{a.name}</p>
-              <p className="text-white/30 text-sm mt-1 sm:mt-0">{a.sub}</p>
+            <div
+              className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-6 border-b"
+              style={{ borderColor: 'rgba(255,255,255,0.08)' }}
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: '#CC1A1A' }} />
+                <p className="text-white font-medium text-xl">{a.name}</p>
+              </div>
+              <p className="text-white/30 text-sm mt-1 sm:mt-0 pl-5 sm:pl-0">{a.sub}</p>
             </div>
           </Reveal>
         ))}
