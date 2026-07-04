@@ -9,6 +9,7 @@ const links = [
   { label: 'Projects', href: '/projects' },
   { label: 'Activities', href: '/activities' },
   { label: 'Awards', href: '/awards' },
+  { label: 'Journal', href: '/journal' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -128,8 +129,7 @@ export default function Nav() {
             );
           })}
         </ul>
-
-        <div className="absolute bottom-10 flex items-center gap-4">
+        <div style={{ position: 'absolute', bottom: 40, display: 'flex', gap: 20 }}>
           {[
             { label: 'LinkedIn', href: 'https://linkedin.com/in/vedansh-anand-175600360' },
             { label: 'Quantaify', href: 'https://quantaify.org' },

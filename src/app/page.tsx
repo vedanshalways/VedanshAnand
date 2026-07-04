@@ -24,7 +24,7 @@ export default function Home() {
               animation: 'fadeUp 0.7s ease 0.1s both',
             }}
           >
-            10th Grade · Sammamish, WA
+            11th Grade · Sammamish, WA
           </p>
 
           {/* Name */}
@@ -49,7 +49,7 @@ export default function Home() {
               animation: 'fadeUp 0.7s ease 0.35s both',
             }}
           >
-            Developer. Founder. Builder.
+            Building Software. Building Community.
           </p>
 
           {/* CTA buttons */}
@@ -122,18 +122,46 @@ export default function Home() {
                 Eastside Catholic<br />High School
               </h2>
               <p className="text-white/60 text-lg leading-relaxed mb-6 max-w-lg mx-auto md:mx-0">
-                Add a few sentences about your school experience here — clubs, classes, community, what it means to you.
+                I&apos;m Vedansh — originally from India, now based in Sammamish, Washington.
+                Moving countries shaped how I see the world: I grew up between two cultures,
+                and that curiosity drives everything I build. I&apos;m always thinking about the
+                next product, the next problem to solve.
               </p>
               <div className="flex flex-wrap gap-x-4 gap-y-2 text-white/35 text-sm justify-center md:justify-start">
                 <span>Sammamish, WA</span>
                 <span className="text-white/15">·</span>
-                <span>10th Grade</span>
+                <span>11th Grade · Class of 2027</span>
                 <span className="text-white/15">·</span>
                 <span>National Honor Society</span>
               </div>
             </div>
           </Reveal>
         </div>
+      </section>
+
+      {/* ── MARQUEE ── */}
+      <section style={{
+        background: '#0a0a0a', padding: '56px 0', overflow: 'hidden', borderTop: '1px solid rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.07)',
+      }}>
+        {[
+          { words: ['Developer', 'Founder', 'Builder', 'Creator', 'Developer', 'Founder', 'Builder', 'Creator'], dir: 1 },
+          { words: ['Robotics', 'AI', 'Fintech', 'Startups', 'Robotics', 'AI', 'Fintech', 'Startups'], dir: -1 },
+        ].map((row, ri) => (
+          <div key={ri} style={{ display: 'flex', whiteSpace: 'nowrap', marginBottom: ri === 0 ? 12 : 0, overflow: 'hidden' }}>
+            <div style={{ display: 'flex', animation: `marquee${row.dir > 0 ? 'Fwd' : 'Rev'} ${22 + ri * 6}s linear infinite` }}>
+              {[...row.words, ...row.words, ...row.words].map((word, wi) => (
+                <span key={wi} style={{ display: 'inline-flex', alignItems: 'center', gap: 16, padding: '0 18px' }}>
+                  <span style={{
+                    fontWeight: 800, fontSize: 'clamp(1.6rem, 4vw, 3rem)',
+                    textTransform: 'uppercase', letterSpacing: '0.06em',
+                    color: 'rgba(255,255,255,0.12)',
+                  }}>{word}</span>
+                  <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: '1rem' }}>·</span>
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
       </section>
 
       {/* ── PROJECTS ── */}
@@ -164,9 +192,9 @@ export default function Home() {
           >
             {[
               { name: 'Amria', tag: 'AI · Medical', year: '2024', href: 'https://amria.org' },
-              { name: 'Quantaify', tag: 'Fintech · iOS', year: '2024', href: 'https://quantaify.org' },
-              { name: 'Incredibots', tag: 'Robotics · FTC', year: '2025', href: null },
-              { name: 'Nova', tag: 'In progress', year: '2025', href: null },
+              { name: 'Quantaify', tag: 'Fintech · iOS', year: '2024', href: 'https://quantaify.org', desc: 'Paper trading platform with real market data & leaderboard' },
+              { name: 'Incredibots', tag: 'Robotics · FTC', year: '2025', href: null, desc: 'Lead programmer, autonomous vision pipeline for FTC #26336' },
+              { name: 'Nova', tag: 'In progress', year: '2025', href: null, desc: 'Currently in development — stay tuned' },
             ].map((p, i) => (
               <Reveal key={p.name} delay={i * 60}>
                 <div
@@ -179,7 +207,8 @@ export default function Home() {
                       style={{ background: '#CC1A1A' }}
                     />
                     <p className="text-white font-semibold text-lg mb-1">{p.name}</p>
-                    <p className="text-white/40 text-xs tracking-wide">{p.tag}</p>
+                    <p className="text-white/40 text-xs tracking-wide mb-2">{p.tag}</p>
+                    <p className="text-white/50 text-sm leading-relaxed">{p.desc}</p>
                   </div>
                   <div className="flex justify-between items-end">
                     <span className="text-white/25 text-xs">{p.year}</span>
@@ -207,6 +236,9 @@ export default function Home() {
         style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
       >
         <Reveal>
+          <p className="text-white/35 uppercase mb-4" style={{ fontSize: '11px', letterSpacing: '0.4em' }}>
+            Get in touch
+          </p>
           <h2
             className="display text-white mb-8"
             style={{ fontSize: 'clamp(3rem, 9vw, 8rem)' }}
@@ -225,6 +257,14 @@ export default function Home() {
         @keyframes fadeUp {
           from { opacity: 0; transform: translateY(24px); }
           to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes marqueeFwd {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-33.333%); }
+        }
+        @keyframes marqueeRev {
+          from { transform: translateX(-33.333%); }
+          to   { transform: translateX(0); }
         }
       `}</style>
     </>

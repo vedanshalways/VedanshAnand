@@ -14,9 +14,11 @@ export default function Footer() {
 
         <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
           {[
+            { label: 'Home', href: '/' },
             { label: 'Projects', href: '/projects' },
             { label: 'Activities', href: '/activities' },
             { label: 'Awards', href: '/awards' },
+            { label: 'Journal', href: '/journal' },
             { label: 'Contact', href: '/contact' },
           ].map(l => (
             <Link
