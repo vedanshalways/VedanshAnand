@@ -48,7 +48,7 @@ export default function ContactPage() {
                   paddingBottom: 6,
                 }}
               >
-                vedansh.always@gmail.com ↗
+                vedansh.always@gmail.com
               </a>
               <p style={{ fontSize: 12, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.3)', marginBottom: 16, fontWeight: 600 }}>
                 Phone
@@ -104,7 +104,6 @@ export default function ContactPage() {
                       <p style={{ fontSize: 16, fontWeight: 700, color: '#0a0a0a', marginBottom: 3 }}>{s.label}</p>
                       <p style={{ fontSize: 12, color: 'rgba(0,0,0,0.38)' }}>{s.sub}</p>
                     </div>
-                    <span style={{ fontSize: 18, color: '#CC1A1A' }}>↗</span>
                   </a>
                 ))}
               </div>

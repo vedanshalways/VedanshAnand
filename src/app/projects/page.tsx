@@ -101,7 +101,7 @@ export default function ProjectsPage() {
                     rel="noopener noreferrer"
                     style={{ fontSize: 13, color: '#CC1A1A', fontWeight: 600, letterSpacing: '0.02em', whiteSpace: 'nowrap' }}
                   >
-                    {p.url} ↗
+                    {p.url}
                   </a>
                 )}
               </div>

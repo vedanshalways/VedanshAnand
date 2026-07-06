@@ -58,7 +58,7 @@ export default function Footer() {
                 onMouseLeave={e => (e.currentTarget.style.color = 'rgba(0,0,0,0.38)')}
               >
                 {l.icon}
-                {l.label} ↗
+                {l.label}
               </a>
             ))}
           </div>
