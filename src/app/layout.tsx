@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, Bebas_Neue } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
@@ -13,7 +14,7 @@ const bebas = Bebas_Neue({
 
 export const metadata: Metadata = {
   title: 'Vedansh Anand',
-  description: 'Personal portfolio of Vedansh Anand — Developer, Founder, Builder',
+  description: 'Personal portfolio of Vedansh Anand. Developer, Founder, Builder',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   );

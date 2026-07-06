@@ -1,59 +1,90 @@
+'use client';
+
 import Link from 'next/link';
+import Image from 'next/image';
+
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Activities', href: '/activities' },
+  { label: 'Awards', href: '/awards' },
+  { label: 'Contact', href: '/contact' },
+];
+
+const socialLinks = [
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/__vedansh_anand__',
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="2" />
+        <circle cx="12" cy="12" r="4.5" stroke="currentColor" strokeWidth="2" />
+        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://linkedin.com/in/vedansh-anand-175600360',
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" strokeWidth="2" />
+        <line x1="7" y1="10" x2="7" y2="17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        <circle cx="7" cy="6.5" r="1.3" fill="currentColor" />
+        <path d="M11 17v-4.5c0-1.5 1-2.5 2.5-2.5s2.5 1 2.5 2.5V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
+  },
+];
 
 export default function Footer() {
   return (
-    <footer style={{ borderTop: '1px solid rgba(255,255,255,0.07)', padding: '3rem 1.5rem' }}>
-      <div className="max-w-5xl mx-auto flex flex-col items-center gap-6 text-center">
+    <footer style={{ borderTop: '1px solid rgba(0,0,0,0.08)', padding: '48px 40px', background: '#fafafa' }}>
+      <div style={{ maxWidth: 1000, margin: '0 auto' }}>
 
-        <span
-          className="display"
-          style={{ fontSize: '2rem', color: '#CC1A1A', letterSpacing: '0.08em' }}
-        >
-          VA
-        </span>
+        {/* Top row — logo + socials */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 20, marginBottom: 36 }}>
+          <Image src="/Vedanshanand logo.png" alt="Vedansh Anand" width={40} height={40} style={{ height: 40, width: 'auto' }} />
 
-        <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-          {[
-            { label: 'Home', href: '/' },
-            { label: 'Projects', href: '/projects' },
-            { label: 'Activities', href: '/activities' },
-            { label: 'Awards', href: '/awards' },
-            { label: 'Journal', href: '/journal' },
-            { label: 'Contact', href: '/contact' },
-          ].map(l => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="text-white/40 text-[12px] uppercase tracking-[0.18em] hover:text-white transition-colors duration-150"
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-5">
-          {[
-            { label: 'LinkedIn', href: 'https://linkedin.com/in/vedansh-anand-175600360' },
-            { label: 'Quantaify', href: 'https://quantaify.org' },
-            { label: 'Amria', href: 'https://amria.org' },
-          ].map((l, i, arr) => (
-            <span key={l.href} className="flex items-center gap-5">
+          <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+            {socialLinks.map(l => (
               <a
+                key={l.href}
                 href={l.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/35 text-xs hover:text-white transition-colors duration-150"
+                style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'rgba(0,0,0,0.38)', textDecoration: 'none', letterSpacing: '0.08em', transition: 'color 0.15s' }}
+                onMouseEnter={e => (e.currentTarget.style.color = '#0a0a0a')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'rgba(0,0,0,0.38)')}
               >
+                {l.icon}
                 {l.label} ↗
               </a>
-              {i < arr.length - 1 && <span className="text-white/15 text-xs">·</span>}
-            </span>
-          ))}
+            ))}
+          </div>
         </div>
 
-        <p className="text-white/20 text-[10px] uppercase tracking-[0.25em]">
-          © {new Date().getFullYear()} Vedansh Anand · Sammamish, WA
-        </p>
+        {/* Divider */}
+        <div style={{ borderTop: '1px solid rgba(0,0,0,0.08)', marginBottom: 24 }} />
+
+        {/* Bottom row — nav + copyright */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
+          <nav style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+            {navLinks.map(l => (
+              <Link
+                key={l.href}
+                href={l.href}
+                style={{ fontSize: 11, color: 'rgba(0,0,0,0.3)', textDecoration: 'none', textTransform: 'uppercase', letterSpacing: '0.15em' }}
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+
+          <p style={{ fontSize: 11, color: 'rgba(0,0,0,0.22)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+            © {new Date().getFullYear()} Vedansh Anand · Sammamish, WA
+          </p>
+        </div>
       </div>
     </footer>
   );

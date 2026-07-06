@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -9,7 +10,6 @@ const links = [
   { label: 'Projects', href: '/projects' },
   { label: 'Activities', href: '/activities' },
   { label: 'Awards', href: '/awards' },
-  { label: 'Journal', href: '/journal' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -36,20 +36,15 @@ export default function Nav() {
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
-          background: scrolled || open ? 'rgba(10,10,10,0.97)' : 'transparent',
+          background: scrolled || open ? 'rgba(255,255,255,0.97)' : 'transparent',
           backdropFilter: scrolled ? 'blur(12px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.07)' : '1px solid transparent',
+          borderBottom: scrolled ? '1px solid rgba(0,0,0,0.08)' : '1px solid transparent',
         }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
           {/* Logo */}
-          <Link
-            href="/"
-            onClick={() => setOpen(false)}
-            className="display text-[1.6rem] leading-none transition-colors duration-150"
-            style={{ color: '#CC1A1A', letterSpacing: '0.08em' }}
-          >
-            VA
+          <Link href="/" onClick={() => setOpen(false)} className="flex items-center">
+            <Image src="/Vedanshanand logo.png" alt="Vedansh Anand" width={36} height={36} priority style={{ height: 36, width: 'auto' }} />
           </Link>
 
           {/* Desktop links */}
@@ -61,7 +56,7 @@ export default function Nav() {
                   <Link
                     href={href}
                     className="relative text-[13px] uppercase tracking-[0.15em] font-semibold transition-colors duration-150 pb-1"
-                    style={{ color: active ? '#ffffff' : 'rgba(255,255,255,0.5)' }}
+                    style={{ color: active ? '#000000' : 'rgba(0,0,0,0.5)' }}
                   >
                     {label}
                     {active && (
@@ -83,15 +78,15 @@ export default function Nav() {
             aria-label={open ? 'Close menu' : 'Open menu'}
           >
             <span
-              className="block w-6 h-0.5 bg-white/80 rounded-full transition-all duration-300 origin-center"
+              className="block w-6 h-0.5 bg-black/80 rounded-full transition-all duration-300 origin-center"
               style={{ transform: open ? 'translateY(8px) rotate(45deg)' : 'none' }}
             />
             <span
-              className="block w-6 h-0.5 bg-white/80 rounded-full transition-all duration-300"
+              className="block w-6 h-0.5 bg-black/80 rounded-full transition-all duration-300"
               style={{ opacity: open ? 0 : 1, transform: open ? 'scaleX(0)' : 'none' }}
             />
             <span
-              className="block w-6 h-0.5 bg-white/80 rounded-full transition-all duration-300 origin-center"
+              className="block w-6 h-0.5 bg-black/80 rounded-full transition-all duration-300 origin-center"
               style={{ transform: open ? 'translateY(-8px) rotate(-45deg)' : 'none' }}
             />
           </button>
@@ -102,7 +97,7 @@ export default function Nav() {
       <div
         className="fixed inset-0 z-40 md:hidden flex flex-col items-center justify-center transition-all duration-300"
         style={{
-          background: '#0d0d0d',
+          background: '#ffffff',
           opacity: open ? 1 : 0,
           pointerEvents: open ? 'auto' : 'none',
           transform: open ? 'translateY(0)' : 'translateY(-8px)',
@@ -119,7 +114,7 @@ export default function Nav() {
                   className="display transition-colors duration-150"
                   style={{
                     fontSize: 'clamp(3rem, 12vw, 5rem)',
-                    color: active ? '#CC1A1A' : 'rgba(255,255,255,0.7)',
+                    color: active ? '#CC1A1A' : 'rgba(0,0,0,0.7)',
                     letterSpacing: '0.04em',
                   }}
                 >
@@ -140,11 +135,11 @@ export default function Nav() {
                 href={l.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/30 text-[11px] tracking-[0.2em] uppercase hover:text-white transition-colors"
+                className="text-black/30 text-[11px] tracking-[0.2em] uppercase hover:text-black transition-colors"
               >
                 {l.label}
               </a>
-              {i < arr.length - 1 && <span className="text-white/15 text-xs">·</span>}
+              {i < arr.length - 1 && <span className="text-black/15 text-xs">·</span>}
             </span>
           ))}
         </div>
