@@ -1,22 +1,22 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const links = [
-  { label: 'Home', href: '/' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'Activities', href: '/activities' },
-  { label: 'Awards', href: '/awards' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Home', href: '#top' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Activities', href: '#activities' },
+  { label: 'Awards', href: '#awards' },
+  { label: 'Contact', href: '#contact' },
 ];
 
+const sectionIds = links.map(l => l.href.slice(1));
+
 export default function Nav() {
-  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('top');
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
@@ -24,7 +24,26 @@ export default function Nav() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  useEffect(() => { setOpen(false); }, [pathname]);
+  useEffect(() => {
+    const sections = sectionIds
+      .map(id => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        const visible = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActive(visible[0].target.id);
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: [0, 0.25, 0.5, 0.75, 1] }
+    );
+
+    sections.forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -43,29 +62,29 @@ export default function Nav() {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" onClick={() => setOpen(false)} className="flex items-center">
+          <a href="#top" onClick={() => setOpen(false)} className="flex items-center">
             <Image src="/Vedanshanand logo.png" alt="Vedansh Anand" width={36} height={36} priority style={{ height: 36, width: 'auto' }} />
-          </Link>
+          </a>
 
           {/* Desktop links */}
           <ul className="hidden md:flex items-center gap-8">
             {links.map(({ label, href }) => {
-              const active = pathname === href;
+              const isActive = active === href.slice(1);
               return (
                 <li key={href}>
-                  <Link
+                  <a
                     href={href}
                     className="relative text-[13px] uppercase tracking-[0.15em] font-semibold transition-colors duration-150 pb-1"
-                    style={{ color: active ? '#000000' : 'rgba(0,0,0,0.5)' }}
+                    style={{ color: isActive ? '#000000' : 'rgba(0,0,0,0.5)' }}
                   >
                     {label}
-                    {active && (
+                    {isActive && (
                       <span
                         className="absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full"
                         style={{ background: '#CC1A1A' }}
                       />
                     )}
-                  </Link>
+                  </a>
                 </li>
               );
             })}
@@ -105,21 +124,21 @@ export default function Nav() {
       >
         <ul className="flex flex-col items-center gap-6">
           {links.map(({ label, href }) => {
-            const active = pathname === href;
+            const isActive = active === href.slice(1);
             return (
               <li key={href}>
-                <Link
+                <a
                   href={href}
                   onClick={() => setOpen(false)}
                   className="display transition-colors duration-150"
                   style={{
                     fontSize: 'clamp(3rem, 12vw, 5rem)',
-                    color: active ? '#CC1A1A' : 'rgba(0,0,0,0.7)',
+                    color: isActive ? '#CC1A1A' : 'rgba(0,0,0,0.7)',
                     letterSpacing: '0.04em',
                   }}
                 >
                   {label}
-                </Link>
+                </a>
               </li>
             );
           })}

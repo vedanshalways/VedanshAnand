@@ -1,14 +1,13 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
 
 const navLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'Activities', href: '/activities' },
-  { label: 'Awards', href: '/awards' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'Home', href: '#top' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Activities', href: '#activities' },
+  { label: 'Awards', href: '#awards' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 const socialLinks = [
@@ -71,13 +70,13 @@ export default function Footer() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
           <nav style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
             {navLinks.map(l => (
-              <Link
+              <a
                 key={l.href}
                 href={l.href}
                 style={{ fontSize: 11, color: 'rgba(0,0,0,0.3)', textDecoration: 'none', textTransform: 'uppercase', letterSpacing: '0.15em' }}
               >
                 {l.label}
-              </Link>
+              </a>
             ))}
           </nav>
 
