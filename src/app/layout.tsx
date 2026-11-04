@@ -1,16 +1,12 @@
 import type { Metadata } from 'next';
-import { Inter, Bebas_Neue } from 'next/font/google';
+import { Bricolage_Grotesque, DM_Sans } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const bebas = Bebas_Neue({
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-display',
-});
+const sans = DM_Sans({ subsets: ['latin'], axes: ['opsz'], variable: '--font-sans' });
+const display = Bricolage_Grotesque({ subsets: ['latin'], axes: ['opsz'], variable: '--font-display' });
 
 export const metadata: Metadata = {
   title: 'Vedansh Anand',
@@ -19,9 +15,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${bebas.variable}`}>
+    <html lang="en" className={`${sans.variable} ${display.variable}`}>
       <body>
-        <div className="site-bg" />
         <div className="site-wrap">
           <Nav />
           <main>{children}</main>

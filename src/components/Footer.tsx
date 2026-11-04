@@ -1,88 +1,72 @@
-'use client';
-
 import Image from 'next/image';
+import Link from 'next/link';
+import TornEdge from './TornEdge';
 
-const navLinks = [
-  { label: 'Home', href: '#top' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Activities', href: '#activities' },
-  { label: 'Awards', href: '#awards' },
-  { label: 'Contact', href: '#contact' },
+const pageLinks = [
+  { label: 'Projects', href: '/#projects' },
+  { label: 'About', href: '/#about' },
+  { label: 'Activities', href: '/#activities' },
+  { label: 'Awards', href: '/#awards' },
 ];
 
-const socialLinks = [
-  {
-    label: 'Instagram',
-    href: 'https://www.instagram.com/__vedansh_anand__',
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="2" />
-        <circle cx="12" cy="12" r="4.5" stroke="currentColor" strokeWidth="2" />
-        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
-      </svg>
-    ),
-  },
-  {
-    label: 'LinkedIn',
-    href: 'https://linkedin.com/in/vedansh-anand-175600360',
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" strokeWidth="2" />
-        <line x1="7" y1="10" x2="7" y2="17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        <circle cx="7" cy="6.5" r="1.3" fill="currentColor" />
-        <path d="M11 17v-4.5c0-1.5 1-2.5 2.5-2.5s2.5 1 2.5 2.5V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
+const findMe = [
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/vedansh-anand-175600360' },
+  { label: 'Instagram', href: 'https://www.instagram.com/__vedansh_anand__' },
+  { label: 'Email', href: 'mailto:vedansh.always@gmail.com' },
 ];
+
+const NAME = 'Vedansh Anand';
+
+function LinkColumn({ title, links }: { title: string; links: { label: string; href: string }[] }) {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+      <p style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.45)', marginBottom: 4 }}>{title}</p>
+      {links.map(l =>
+        l.href.startsWith('/') ? (
+          <Link key={l.href} href={l.href} className="footer-link">{l.label}</Link>
+        ) : (
+          <a
+            key={l.href}
+            href={l.href}
+            className="footer-link"
+            {...(l.href.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' })}
+          >
+            {l.label}
+          </a>
+        ),
+      )}
+    </div>
+  );
+}
 
 export default function Footer() {
   return (
-    <footer style={{ borderTop: '1px solid rgba(0,0,0,0.08)', padding: '48px 40px', background: '#fafafa' }}>
-      <div style={{ maxWidth: 1000, margin: '0 auto' }}>
+    <footer style={{ position: 'relative', background: '#0d0d0d', color: '#fff', padding: '104px 32px 0', overflow: 'hidden' }}>
+      <TornEdge edge="footer" fill="#f4f2ee" shadow="rgba(0,0,0,0.3)" />
 
-        {/* Top row — logo + socials */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 20, marginBottom: 36 }}>
-          <Image src="/Vedanshanand logo.png" alt="Vedansh Anand" width={40} height={40} style={{ height: 40, width: 'auto' }} />
-
-          <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
-            {socialLinks.map(l => (
-              <a
-                key={l.href}
-                href={l.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'rgba(0,0,0,0.38)', textDecoration: 'none', letterSpacing: '0.08em', transition: 'color 0.15s' }}
-                onMouseEnter={e => (e.currentTarget.style.color = '#0a0a0a')}
-                onMouseLeave={e => (e.currentTarget.style.color = 'rgba(0,0,0,0.38)')}
-              >
-                {l.icon}
-                {l.label}
-              </a>
-            ))}
+      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+        <div className="footer-grid">
+          <div className="footer-brand" style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
+            <Image src="/Vedanshanand logo.png" alt="Vedansh Anand" width={34} height={34} style={{ height: 34, width: 'auto', alignSelf: 'flex-start' }} />
+            <p style={{ fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.6)', maxWidth: 300 }}>
+              Building things and competing from Sammamish, WA.
+            </p>
           </div>
+          <LinkColumn title="Pages" links={pageLinks} />
+          <LinkColumn title="Find me" links={findMe} />
         </div>
+      </div>
 
-        {/* Divider */}
-        <div style={{ borderTop: '1px solid rgba(0,0,0,0.08)', marginBottom: 24 }} />
-
-        {/* Bottom row — nav + copyright */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
-          <nav style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
-            {navLinks.map(l => (
-              <a
-                key={l.href}
-                href={l.href}
-                style={{ fontSize: 11, color: 'rgba(0,0,0,0.3)', textDecoration: 'none', textTransform: 'uppercase', letterSpacing: '0.15em' }}
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
-
-          <p style={{ fontSize: 11, color: 'rgba(0,0,0,0.22)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-            © {new Date().getFullYear()} Vedansh Anand · Sammamish, WA
-          </p>
+      {/* Oversized wordmark; each letter hops in turn */}
+      <div aria-hidden="true" style={{ overflow: 'hidden', margin: '40px -2vw -2.2vw' }}>
+        <div className="display hop-word" style={{ fontWeight: 800, letterSpacing: '-0.05em', lineHeight: 1 }}>
+          {[...NAME].map((ch, i) =>
+            ch === ' ' ? (
+              <span key={i} className="hop-gap" />
+            ) : (
+              <span key={i} style={{ animationDelay: `${(i * 0.08).toFixed(2)}s` }}>{ch}</span>
+            ),
+          )}
         </div>
       </div>
     </footer>
