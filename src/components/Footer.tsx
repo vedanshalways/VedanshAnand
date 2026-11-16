@@ -57,8 +57,8 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Oversized wordmark; each letter hops in turn */}
-      <div aria-hidden="true" style={{ overflow: 'hidden', margin: '40px -2vw -2.2vw' }}>
+      {/* Oversized wordmark, full-bleed past the footer padding; each letter hops in turn */}
+      <div aria-hidden="true" style={{ overflow: 'hidden', margin: '40px -32px -2.2vw' }}>
         <div className="display hop-word" style={{ fontWeight: 800, letterSpacing: '-0.05em', lineHeight: 1 }}>
           {[...NAME].map((ch, i) =>
             ch === ' ' ? (

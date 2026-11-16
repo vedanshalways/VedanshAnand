@@ -191,10 +191,7 @@ export default function Home() {
   return (
     <>
       {/* ── HERO ── */}
-      <section
-        id="top"
-        style={{ position: 'relative', minHeight: '92vh', display: 'flex', alignItems: 'center', background: '#0d0d0d', overflow: 'hidden', scrollMarginTop: 64, padding: '120px 0 160px' }}
-      >
+      <section id="top" className="hero">
         <div className="hero-photo">
           <Image
             src="/me.jpg"
@@ -202,14 +199,14 @@ export default function Home() {
             fill
             loading="eager"
             fetchPriority="high"
-            sizes="(max-width: 800px) 480px, 60vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 800px) 480px, 60vw"
             style={{ objectFit: 'cover', objectPosition: 'center 28%' }}
           />
         </div>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, #0d0d0d 0%, #0d0d0d 36%, rgba(13,13,13,0.75) 52%, rgba(13,13,13,0.15) 78%, rgba(13,13,13,0) 100%)' }} />
+        <div className="hero-shade-x" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, #0d0d0d 0%, #0d0d0d 36%, rgba(13,13,13,0.75) 52%, rgba(13,13,13,0.15) 78%, rgba(13,13,13,0) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(13,13,13,0.55) 0%, rgba(13,13,13,0) 22%)' }} />
 
-        <div style={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: 1200, margin: '0 auto', padding: '0 32px' }}>
+        <div className="hero-content">
           <div style={{ maxWidth: 640, display: 'flex', flexDirection: 'column', gap: 20 }}>
             <h1 className="display" style={{ color: '#fff', fontSize: 'clamp(3.2rem, 7.2vw, 6.6rem)', animation: 'fadeUp 0.7s ease 0.2s both' }}>
               Vedansh Anand
@@ -217,7 +214,7 @@ export default function Home() {
             <p style={{ fontSize: 17, lineHeight: 1.65, color: '#fff', maxWidth: 520, textWrap: 'pretty', animation: 'fadeUp 0.7s ease 0.3s both' }}>
               11th grader at Eastside Catholic in Sammamish, WA. I build AI tools, fintech apps, and robots, and I like competing.
             </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 28, flexWrap: 'wrap', marginTop: 16, animation: 'fadeUp 0.7s ease 0.4s both' }}>
+            <div className="hero-actions" style={{ animation: 'fadeUp 0.7s ease 0.4s both' }}>
               <a href="#projects" className="btn-red btn-hero">See my work <span aria-hidden="true">↓</span></a>
               <a href="#contact" className="btn-ghost-light">Get in touch</a>
             </div>

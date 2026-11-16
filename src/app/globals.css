@@ -38,6 +38,34 @@ body {
   line-height: 0.95;
 }
 
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  background: #0d0d0d;
+  overflow: hidden;
+  scroll-margin-top: 64px;
+  padding: 120px 0 160px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-top: 16px;
+}
+
 /* Hero portrait, faded in from the left behind the copy */
 .hero-photo {
   position: absolute;
@@ -47,6 +75,35 @@ body {
   width: max(60%, 480px);
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 35%);
   mask-image: linear-gradient(90deg, transparent 0%, #000 35%);
+}
+
+/* Phones: a side fade would bury the face under the headline, so stack the
+   portrait on top and fade it out downward into the copy instead. */
+@media (max-width: 640px) {
+  .hero {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding: 0 0 140px;
+  }
+  .hero-photo {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-height: max(64vh, 420px);
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  }
+  .hero-shade-x { display: none; }
+  .hero-content { margin-top: -72px; }
+  /* Equal-width pair; drops to two full-width rows on very narrow screens. */
+  .hero-actions { gap: 10px; }
+  .hero-actions > a {
+    flex: 1 1 140px;
+    justify-content: center;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
 }
 
 /* ── Buttons & links ── */
@@ -188,7 +245,10 @@ body {
   justify-content: center;
   align-items: flex-end;
   padding-top: 0.28em;
-  font-size: 15vw;
+  /* Pin the optical size so the word keeps the same proportions (~6.5em wide)
+     at every screen size, then size it to fill ~95% of the viewport. */
+  font-variation-settings: "opsz" 96;
+  font-size: 14.5vw;
   color: #CC1A1A;
   white-space: nowrap;
   user-select: none;
