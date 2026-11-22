@@ -247,10 +247,10 @@ export default function Home() {
           />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(460px, 100%), 1fr))', gap: 20 }}>
             {projects.map(p => (
-              <a key={p.name} href={p.href} target="_blank" rel="noopener noreferrer" className="card">
+              <article key={p.name} className="card card-linked">
                 <div style={{ aspectRatio: '16 / 9', overflow: 'hidden', background: p.video ? '#f6efe3' : '#f2f2f2', borderBottom: '1px solid rgba(0,0,0,0.07)' }}>
                   {p.video ? (
-                    <AutoplayVideo src={p.video} />
+                    <AutoplayVideo src={p.video} label={`${p.name} demo video`} />
                   ) : (
                     <img
                       src={p.preview}
@@ -275,9 +275,9 @@ export default function Home() {
                 </div>
                 <div style={{ padding: '16px 28px', borderTop: '1px solid rgba(0,0,0,0.07)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12, fontSize: 13, fontWeight: 700 }}>
                   <span style={{ color: 'rgba(0,0,0,0.45)', fontWeight: 500, overflowWrap: 'anywhere' }}>{p.url}</span>
-                  <span style={{ color: RED, whiteSpace: 'nowrap' }}>Open site ↗</span>
+                  <a href={p.href} target="_blank" rel="noopener noreferrer" className="card-link" aria-label={`Open the ${p.name} site`} style={{ color: RED, whiteSpace: 'nowrap' }}>Open site ↗</a>
                 </div>
-              </a>
+              </article>
             ))}
           </div>
         </div>

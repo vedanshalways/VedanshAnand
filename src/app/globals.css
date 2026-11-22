@@ -225,6 +225,45 @@ body {
 }
 .card:hover { border-color: rgba(0,0,0,0.28); }
 
+/* A project card is one big link (via the "Open site" link's overlay), except
+   its video, which sits above the overlay so a tap plays it in place. */
+.card-linked { position: relative; }
+.card-link::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+.card-video { position: relative; z-index: 2; width: 100%; height: 100%; cursor: pointer; }
+.card-video video::-webkit-media-controls-start-playback-button { display: none !important; -webkit-appearance: none; }
+.card-video-btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  border: 0;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: rgba(10,10,10,0.62);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.card-video-btn.is-playing {
+  left: auto;
+  top: auto;
+  right: 12px;
+  bottom: 12px;
+  transform: none;
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+}
+.card-video:hover .card-video-btn.is-playing,
+.card-video-btn.is-playing:focus-visible { opacity: 1; }
+@media (hover: none) {
+  .card-video-btn.is-playing { opacity: 0.85; }
+}
+
 /* ── Footer ── */
 .footer-grid {
   display: grid;
